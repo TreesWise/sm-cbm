@@ -1,0 +1,60 @@
+,Features,All_Features
+10,Relative Engine Speed,Relative Engine Speed
+5,Engine Internal Speed Setpoint,Engine Internal Speed Setpoint
+12,Exh. valve closing angle at CMCR,Exh. valve closing angle at CMCR
+22,Exh. valve opening angle Cyl AVG,Exh. valve opening angle Cyl #01
+16,GAV Timing Set Point Cyl AVG,Exh. valve opening angle Cyl #02
+4,Engine speed,Exh. valve opening angle Cyl #03
+23,Exhaust Valve Closing Angle Setpoint Cyl AVG,Exh. valve opening angle Cyl #04
+3,Limited MFI PID MAX value,Exh. valve opening angle Cyl #05
+1,Gas Scav. Air Delta Pressure,Exh. valve opening angle Cyl #06
+17,PFI Timing Set Point Cyl AVG,GAV Timing Set Point Cyl #01
+6,Engine External Speed Setpoint,GAV Timing Set Point Cyl #02
+20,Firing Pr. Balancing Injection Offset Cyl_AVG,GAV Timing Set Point Cyl #03
+11,Pilot Fuel Pressure Setpoint,GAV Timing Set Point Cyl #04
+0,Scavenge Air Control Signal,GAV Timing Set Point Cyl #05
+18,Fuel Pressure Actuator Setpoint_AVG,GAV Timing Set Point Cyl #06
+13,Cyl. lub. distribution share below_PERC,Engine speed
+8,Fuel Pressure Setpoint,Exhaust Valve Closing Angle Setpoint Cyl #01
+21,Lubrication Oil Feed Rate Cyl AVG,Exhaust Valve Closing Angle Setpoint Cyl #02
+7,MFI Demand,Exhaust Valve Closing Angle Setpoint Cyl #03
+2,Number of active Injection Nozzles,Exhaust Valve Closing Angle Setpoint Cyl #04
+9,TC Bearing Oil Pressure Inlet TC #01.1,Exhaust Valve Closing Angle Setpoint Cyl #05
+19,Fuel Pump Setpoint_AVG,Exhaust Valve Closing Angle Setpoint Cyl #06
+15,Fuel Rail Pressure_diff,Limited MFI PID MAX value
+14,Cyl. lub. distribution share above_PERC,Gas Scav. Air Delta Pressure
+,,PFI Timing Set Point Cyl #01
+,,PFI Timing Set Point Cyl #02
+,,PFI Timing Set Point Cyl #03
+,,PFI Timing Set Point Cyl #04
+,,PFI Timing Set Point Cyl #05
+,,PFI Timing Set Point Cyl #06
+,,Engine External Speed Setpoint
+,,Firing Pr. Balancing Injection Offset Cyl #01
+,,Firing Pr. Balancing Injection Offset Cyl #02
+,,Firing Pr. Balancing Injection Offset Cyl #03
+,,Firing Pr. Balancing Injection Offset Cyl #04
+,,Firing Pr. Balancing Injection Offset Cyl #05
+,,Firing Pr. Balancing Injection Offset Cyl #06
+,,Pilot Fuel Pressure Setpoint
+,,Scavenge Air Control Signal
+,,Fuel Pressure Actuator Setpoint 1
+,,Fuel Pressure Actuator Setpoint 2
+,,Fuel Pressure Actuator Setpoint 3
+,,Cyl. lub. distribution share below piston
+,,Cyl. lub. distribution share above piston
+,,Cyl. lub. distribution share into piston
+,,Fuel Pressure Setpoint
+,,Lubrication Oil Feed Rate Cyl #01
+,,Lubrication Oil Feed Rate Cyl #02
+,,Lubrication Oil Feed Rate Cyl #03
+,,Lubrication Oil Feed Rate Cyl #04
+,,Lubrication Oil Feed Rate Cyl #05
+,,Lubrication Oil Feed Rate Cyl #06
+,,MFI Demand
+,,Number of active Injection Nozzles
+,,TC Bearing Oil Pressure Inlet TC #01.1
+,,Fuel Pump Setpoint Master Controller
+,,Fuel Pump Setpoint Slave Controller
+,,Mean Fuel Rail Pressure (display)
+,,Main Fuel Rail Pressure

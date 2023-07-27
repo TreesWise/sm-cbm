@@ -1,0 +1,55 @@
+,Features,All_Features
+10,Exh. valve closing angle at CMCR,Exh. valve closing angle at CMCR
+14,Exh. valve opening angle at CMCR,Exh. valve opening angle at CMCR
+17,Pilot Fuel Pressure A,Pilot Fuel Pressure A
+12,Pilot Fuel Pressure Setpoint,Pilot Fuel Pressure Setpoint
+18,Relative Engine Speed,Relative Engine Speed
+7,Engine Internal Speed Setpoint,Engine Internal Speed Setpoint
+22,Exh. valve opening angle Cyl AVG,Exh. valve opening angle Cyl #01
+23,GAV Timing Set Point Cyl AVG,Exh. valve opening angle Cyl #02
+16,Servo Oil Pump Setpoint 1,Exh. valve opening angle Cyl #03
+11,Servo Oil Pump Setpoint 2,Exh. valve opening angle Cyl #04
+8,Engine speed,Exh. valve opening angle Cyl #05
+3,Servo oil pressure for display,Exh. valve opening angle Cyl #06
+26,Exhaust Valve Closing Angle Setpoint Cyl AVG,GAV Timing Set Point Cyl #01
+13,Servo Oil Pressure setpoint bar,GAV Timing Set Point Cyl #02
+5,Limited MFI PID MAX value,GAV Timing Set Point Cyl #03
+1,Gas Scav. Air Delta Pressure,GAV Timing Set Point Cyl #04
+24,PFI Timing Set Point Cyl AVG,GAV Timing Set Point Cyl #05
+9,Engine External Speed Setpoint,GAV Timing Set Point Cyl #06
+25,PFI Duration Set Point Cyl AVG,Servo Oil Pump Setpoint 1
+19,Cyl. lub. distribution share below_PERC,Servo Oil Pump Setpoint 2
+2,Fuel Pressure Setpoint,Engine speed
+4,MFI Demand,Servo oil pressure for display
+0,Number of active Injection Nozzles,Exhaust Valve Closing Angle Setpoint Cyl #01
+6,Fuel oil temperature supply unit.1,Exhaust Valve Closing Angle Setpoint Cyl #02
+15,TC Bearing Oil Pressure Inlet TC #01.1,Exhaust Valve Closing Angle Setpoint Cyl #03
+21,Fuel Rail Pressure_diff,Exhaust Valve Closing Angle Setpoint Cyl #04
+20,Cyl. lub. distribution share above_PERC,Exhaust Valve Closing Angle Setpoint Cyl #05
+,,Exhaust Valve Closing Angle Setpoint Cyl #06
+,,Servo Oil Pressure setpoint bar
+,,Limited MFI PID MAX value
+,,Gas Scav. Air Delta Pressure
+,,PFI Timing Set Point Cyl #01
+,,PFI Timing Set Point Cyl #02
+,,PFI Timing Set Point Cyl #03
+,,PFI Timing Set Point Cyl #04
+,,PFI Timing Set Point Cyl #05
+,,PFI Timing Set Point Cyl #06
+,,Engine External Speed Setpoint
+,,PFI Duration Set Point Cyl #01
+,,PFI Duration Set Point Cyl #02
+,,PFI Duration Set Point Cyl #03
+,,PFI Duration Set Point Cyl #04
+,,PFI Duration Set Point Cyl #05
+,,PFI Duration Set Point Cyl #06
+,,Cyl. lub. distribution share below piston
+,,Cyl. lub. distribution share above piston
+,,Cyl. lub. distribution share into piston
+,,Fuel Pressure Setpoint
+,,MFI Demand
+,,Number of active Injection Nozzles
+,,Fuel oil temperature supply unit.1
+,,TC Bearing Oil Pressure Inlet TC #01.1
+,,Mean Fuel Rail Pressure (display)
+,,Main Fuel Rail Pressure

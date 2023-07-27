@@ -1,0 +1,45 @@
+,Features,All_Features
+13,Exh. valve opening angle at CMCR,Exh. valve opening angle at CMCR
+12,Estimated engine load,Estimated engine load
+9,Exh. valve closing angle at CMCR,Exh. valve closing angle at CMCR
+2,Engine Internal Speed Setpoint,Engine Internal Speed Setpoint
+15,Relative Engine Speed,Relative Engine Speed
+19,Exh. valve opening angle Cyl AVG,Exh. valve opening angle Cyl #01
+18,GAV Timing Set Point Cyl AVG,Exh. valve opening angle Cyl #02
+1,Engine speed,Exh. valve opening angle Cyl #03
+14,Estimated power,Exh. valve opening angle Cyl #04
+22,Exhaust Valve Closing Angle Setpoint Cyl AVG,Exh. valve opening angle Cyl #05
+8,Urea amount (from ECS),Exh. valve opening angle Cyl #06
+5,Limited MFI PID MAX value,GAV Timing Set Point Cyl #01
+21,PFI Timing Set Point Cyl AVG,GAV Timing Set Point Cyl #02
+4,Engine External Speed Setpoint,GAV Timing Set Point Cyl #03
+20,PFI Duration Set Point Cyl AVG,GAV Timing Set Point Cyl #04
+3,Gas Scav. Air Delta Pressure,GAV Timing Set Point Cyl #05
+10,Fuel Pressure Setpoint,GAV Timing Set Point Cyl #06
+16,Cyl. lub. distribution share below_PERC,Engine speed
+0,Number of active Injection Nozzles,Estimated power
+6,MFI Demand,Exhaust Valve Closing Angle Setpoint Cyl #01
+7,Fuel oil temperature supply unit.1,Exhaust Valve Closing Angle Setpoint Cyl #02
+11,TC Bearing Oil Pressure Inlet TC #01.1,Exhaust Valve Closing Angle Setpoint Cyl #03
+23,Fuel Rail Pressure_diff,Exhaust Valve Closing Angle Setpoint Cyl #04
+17,Cyl. lub. distribution share above_PERC,Exhaust Valve Closing Angle Setpoint Cyl #05
+,,Exhaust Valve Closing Angle Setpoint Cyl #06
+,,Urea amount (from ECS)
+,,Limited MFI PID MAX value
+,,PFI Timing Set Point Cyl #01
+,,PFI Timing Set Point Cyl #02
+,,PFI Timing Set Point Cyl #03
+,,PFI Timing Set Point Cyl #04
+,,PFI Timing Set Point Cyl #05
+,,PFI Timing Set Point Cyl #06
+,,Gas Scav. Air Delta Pressure
+,,Fuel Pressure Setpoint
+,,Cyl. lub. distribution share below piston
+,,Cyl. lub. distribution share above piston
+,,Cyl. lub. distribution share into piston
+,,Number of active Injection Nozzles
+,,MFI Demand
+,,Fuel oil temperature supply unit.1
+,,TC Bearing Oil Pressure Inlet TC #01.1
+,,Mean Fuel Rail Pressure (display)
+,,Main Fuel Rail Pressure

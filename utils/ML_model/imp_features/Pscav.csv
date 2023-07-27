@@ -1,0 +1,52 @@
+,Features,All_Features
+14,Exh. valve opening angle at CMCR,Exh. valve opening angle at CMCR
+13,Estimated engine load,Estimated engine load
+12,Exh. valve closing angle at CMCR,Exh. valve closing angle at CMCR
+18,Exh. valve opening angle Cyl AVG,Exh. valve opening angle Cyl #01
+5,Engine Internal Speed Setpoint,Exh. valve opening angle Cyl #02
+19,GAV Timing Set Point Cyl AVG,Exh. valve opening angle Cyl #03
+4,Engine speed,Exh. valve opening angle Cyl #04
+10,Estimated power,Exh. valve opening angle Cyl #05
+23,Exhaust Valve Closing Angle Setpoint Cyl AVG,Exh. valve opening angle Cyl #06
+9,Urea amount (from ECS),Engine Internal Speed Setpoint
+3,Limited MFI PID MAX value,GAV Timing Set Point Cyl #01
+21,PFI Timing Set Point Cyl AVG,GAV Timing Set Point Cyl #02
+6,Engine External Speed Setpoint,GAV Timing Set Point Cyl #03
+20,PFI Duration Set Point Cyl AVG,GAV Timing Set Point Cyl #04
+1,Gas Scav. Air Delta Pressure,GAV Timing Set Point Cyl #05
+15,Pilot Fuel Pressure Setpoint,GAV Timing Set Point Cyl #06
+0,Scavenge Air Control Signal,Engine speed
+8,Fuel Pressure Setpoint,Estimated power
+16,Cyl. lub. distribution share below_PERC,Exhaust Valve Closing Angle Setpoint Cyl #01
+7,MFI Demand,Exhaust Valve Closing Angle Setpoint Cyl #02
+2,Number of active Injection Nozzles,Exhaust Valve Closing Angle Setpoint Cyl #03
+11,TC Bearing Oil Pressure Inlet TC #01.1,Exhaust Valve Closing Angle Setpoint Cyl #04
+22,Fuel Rail Pressure_diff,Exhaust Valve Closing Angle Setpoint Cyl #05
+17,Cyl. lub. distribution share above_PERC,Exhaust Valve Closing Angle Setpoint Cyl #06
+,,Urea amount (from ECS)
+,,Limited MFI PID MAX value
+,,PFI Timing Set Point Cyl #01
+,,PFI Timing Set Point Cyl #02
+,,PFI Timing Set Point Cyl #03
+,,PFI Timing Set Point Cyl #04
+,,PFI Timing Set Point Cyl #05
+,,PFI Timing Set Point Cyl #06
+,,Engine External Speed Setpoint
+,,PFI Duration Set Point Cyl #01
+,,PFI Duration Set Point Cyl #02
+,,PFI Duration Set Point Cyl #03
+,,PFI Duration Set Point Cyl #04
+,,PFI Duration Set Point Cyl #05
+,,PFI Duration Set Point Cyl #06
+,,Gas Scav. Air Delta Pressure
+,,Pilot Fuel Pressure Setpoint
+,,Scavenge Air Control Signal
+,,Fuel Pressure Setpoint
+,,Cyl. lub. distribution share below piston
+,,Cyl. lub. distribution share above piston
+,,Cyl. lub. distribution share into piston
+,,MFI Demand
+,,Number of active Injection Nozzles
+,,TC Bearing Oil Pressure Inlet TC #01.1
+,,Mean Fuel Rail Pressure (display)
+,,Main Fuel Rail Pressure

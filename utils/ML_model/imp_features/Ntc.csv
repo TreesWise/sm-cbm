@@ -1,0 +1,51 @@
+,Features,All_Features
+8,Exh. valve opening angle at CMCR,Exh. valve opening angle at CMCR
+9,Estimated engine load,Estimated engine load
+6,Exh. valve closing angle at CMCR,Exh. valve closing angle at CMCR
+19,Exh. valve opening angle Cyl AVG,Exh. valve opening angle Cyl #01
+4,Engine Internal Speed Setpoint,Exh. valve opening angle Cyl #02
+17,GAV Timing Set Point Cyl AVG,Exh. valve opening angle Cyl #03
+7,Engine speed,Exh. valve opening angle Cyl #04
+13,Estimated power,Exh. valve opening angle Cyl #05
+22,Exhaust Valve Closing Angle Setpoint Cyl AVG,Exh. valve opening angle Cyl #06
+12,Urea amount (from ECS),Engine Internal Speed Setpoint
+5,Limited MFI PID MAX value,GAV Timing Set Point Cyl #01
+21,PFI Timing Set Point Cyl AVG,GAV Timing Set Point Cyl #02
+11,Engine External Speed Setpoint,GAV Timing Set Point Cyl #03
+20,PFI Duration Set Point Cyl AVG,GAV Timing Set Point Cyl #04
+1,Gas Scav. Air Delta Pressure,GAV Timing Set Point Cyl #05
+10,Pilot Fuel Pressure Setpoint,GAV Timing Set Point Cyl #06
+14,Scavenge Air Control Signal,Engine speed
+3,Fuel Pressure Setpoint,Estimated power
+15,Cyl. lub. distribution share below_PERC,Exhaust Valve Closing Angle Setpoint Cyl #01
+2,MFI Demand,Exhaust Valve Closing Angle Setpoint Cyl #02
+0,Number of active Injection Nozzles,Exhaust Valve Closing Angle Setpoint Cyl #03
+18,Fuel Rail Pressure_diff,Exhaust Valve Closing Angle Setpoint Cyl #04
+16,Cyl. lub. distribution share above_PERC,Exhaust Valve Closing Angle Setpoint Cyl #05
+,,Exhaust Valve Closing Angle Setpoint Cyl #06
+,,Urea amount (from ECS)
+,,Limited MFI PID MAX value
+,,PFI Timing Set Point Cyl #01
+,,PFI Timing Set Point Cyl #02
+,,PFI Timing Set Point Cyl #03
+,,PFI Timing Set Point Cyl #04
+,,PFI Timing Set Point Cyl #05
+,,PFI Timing Set Point Cyl #06
+,,Engine External Speed Setpoint
+,,PFI Duration Set Point Cyl #01
+,,PFI Duration Set Point Cyl #02
+,,PFI Duration Set Point Cyl #03
+,,PFI Duration Set Point Cyl #04
+,,PFI Duration Set Point Cyl #05
+,,PFI Duration Set Point Cyl #06
+,,Gas Scav. Air Delta Pressure
+,,Pilot Fuel Pressure Setpoint
+,,Scavenge Air Control Signal
+,,Fuel Pressure Setpoint
+,,Cyl. lub. distribution share below piston
+,,Cyl. lub. distribution share above piston
+,,Cyl. lub. distribution share into piston
+,,MFI Demand
+,,Number of active Injection Nozzles
+,,Mean Fuel Rail Pressure (display)
+,,Main Fuel Rail Pressure

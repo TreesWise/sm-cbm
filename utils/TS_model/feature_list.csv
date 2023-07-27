@@ -1,0 +1,42 @@
+a
+Urea amount (from ECS)
+Barometric Pressure 1
+Scavenge Air Control Signal
+Engine speed
+Pilot Fuel Pressure Setpoint
+Barometric Pressure 2
+Servo Oil Pump Setpoint 2
+Common Start of Injection
+VIT intermediate result C
+Engine External Speed Setpoint
+TC Bearing Oil Pressure Inlet TC #01.1
+Limited MFI PID MAX value
+Exh. valve closing angle at CMCR
+Exh. valve opening angle at CMCR
+Servo oil pressure for display
+Servo Oil Pressure setpoint bar
+Engine Internal Speed Setpoint
+Number of active Injection Nozzles
+Fuel Pressure Setpoint
+MFI Demand
+Servo Oil Pump Setpoint 1
+Fuel oil temperature supply unit.1
+Gas Scav. Air Delta Pressure
+Relative Engine Speed
+Estimated power
+Exh. valve opening angle Cyl AVG
+GAV Timing Set Point Cyl AVG
+Exhaust Valve Closing Angle Setpoint Cyl AVG
+PFI Timing Set Point Cyl AVG
+PFI Duration Set Point Cyl AVG
+Cyl. lub. distribution share below_PERC
+Cyl. lub. distribution share above_PERC
+Fuel Rail Pressure_diff
+Firing Pr. Balancing Injection Offset Cyl_AVG
+Fuel Pressure Actuator Setpoint_AVG
+Fuel Pump Setpoint_AVG
+Lubrication Oil Feed Rate Cyl AVG
+Lubrication Deadtime Feedback Cyl AVG
+Start of Injection Cyl_AVG
+Pilot Fuel Pressure diff
+Scavenge Air Temp. Piston Underside Cyl_AVG

@@ -1,0 +1,64 @@
+,Features,All_Features
+8,Relative Engine Speed,Relative Engine Speed
+7,Engine Internal Speed Setpoint,Engine Internal Speed Setpoint
+4,Engine speed,Engine speed
+17,GAV Timing Set Point Cyl AVG,GAV Timing Set Point Cyl #01
+23,Exhaust Valve Closing Angle Setpoint Cyl AVG,GAV Timing Set Point Cyl #02
+5,Limited MFI PID MAX value,GAV Timing Set Point Cyl #03
+1,Gas Scav. Air Delta Pressure,GAV Timing Set Point Cyl #04
+14,Servo oil pressure for display,GAV Timing Set Point Cyl #05
+20,PFI Timing Set Point Cyl AVG,GAV Timing Set Point Cyl #06
+6,Engine External Speed Setpoint,Exhaust Valve Closing Angle Setpoint Cyl #01
+13,PFI Duration Set Point Cyl AVG,Exhaust Valve Closing Angle Setpoint Cyl #02
+21,Pilot Fuel Pressure Setpoint,Exhaust Valve Closing Angle Setpoint Cyl #03
+12,Fuel Pressure Actuator Setpoint_AVG,Exhaust Valve Closing Angle Setpoint Cyl #04
+26,Scavenge Air Temp. Piston Underside Cyl_AVG,Exhaust Valve Closing Angle Setpoint Cyl #05
+15,Cyl. lub. distribution share below_PERC,Exhaust Valve Closing Angle Setpoint Cyl #06
+18,Fuel Pressure Setpoint,Limited MFI PID MAX value
+3,Lubrication Deadtime Feedback Cyl AVG,Gas Scav. Air Delta Pressure
+24,Start of Injection Cyl_AVG,Servo oil pressure for display
+10,MFI Demand,PFI Timing Set Point Cyl #01
+9,Number of active Injection Nozzles,PFI Timing Set Point Cyl #02
+2,TC Bearing Oil Pressure Inlet TC #01.1,PFI Timing Set Point Cyl #03
+11,Fuel oil temperature supply unit.1,PFI Timing Set Point Cyl #04
+0,Pilot Fuel Pressure diff,PFI Timing Set Point Cyl #05
+22,Fuel Pump Setpoint_AVG,PFI Timing Set Point Cyl #06
+25,Fuel Rail Pressure_diff,Engine External Speed Setpoint
+16,Cyl. lub. distribution share above_PERC,PFI Duration Set Point Cyl #01
+,,PFI Duration Set Point Cyl #02
+,,PFI Duration Set Point Cyl #03
+,,PFI Duration Set Point Cyl #04
+,,PFI Duration Set Point Cyl #05
+,,PFI Duration Set Point Cyl #06
+,,Pilot Fuel Pressure Setpoint
+,,Fuel Pressure Actuator Setpoint 1
+,,Fuel Pressure Actuator Setpoint 2
+,,Fuel Pressure Actuator Setpoint 3
+,,Scavenge Air Temp. Piston Underside Cyl #01.1
+,,Cyl. lub. distribution share below piston
+,,Cyl. lub. distribution share above piston
+,,Cyl. lub. distribution share into piston
+,,Fuel Pressure Setpoint
+,,Lubrication Deadtime Feedback Cyl #01
+,,Lubrication Deadtime Feedback Cyl #02
+,,Lubrication Deadtime Feedback Cyl #03
+,,Lubrication Deadtime Feedback Cyl #04
+,,Lubrication Deadtime Feedback Cyl #05
+,,Lubrication Deadtime Feedback Cyl #06
+,,Start of Injection Cyl #01
+,,Start of Injection Cyl #01
+,,Start of Injection Cyl #02
+,,Start of Injection Cyl #03
+,,Start of Injection Cyl #04
+,,Start of Injection Cyl #05
+,,Start of Injection Cyl #06
+,,MFI Demand
+,,Number of active Injection Nozzles
+,,TC Bearing Oil Pressure Inlet TC #01.1
+,,Fuel oil temperature supply unit.1
+,,Pilot Fuel Pressure A
+,,Pilot Fuel Pressure B
+,,Fuel Pump Setpoint Master Controller
+,,Fuel Pump Setpoint Slave Controller
+,,Mean Fuel Rail Pressure (display)
+,,Main Fuel Rail Pressure
