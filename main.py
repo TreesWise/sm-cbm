@@ -130,17 +130,17 @@ async def forecast_14days(current_user: User = Depends(get_current_active_user))
     fault_mat_loc = './utils/Fault_Matrix/Fault_matrix.xlsx'
     p=.2 #weight value for kpi calculations
     mapping_loc = './utils/Fault_Matrix/results/'
-    for i in range(1,2):#------------ML.cyl_count+1
-        ml_ress = pd.read_csv(ml_res_loc+'ENG_2_TS_ML_res_Cyl_{}.csv'.format(str(i)),index_col=False)
-        ff = Faults_Mapping(ml_ress,fault_mat_loc,Efd_features,p)
-        ff1,fault_ids = ff.Mapping()
-        ml_ress = pd.concat([ml_ress,ff1[fault_ids]],axis=1)
-        ml_ress['Date Time'] = final_indx
-        #for ordering columns
-        ml_ress = ml_ress[['Date Time','Estimated engine load','matched_load','matched_date','deltas','TS_Pcomp','TS_Pscav','TS_Texh','TS_Ntc','TS_Pmax','TS_PR','TS_Ntc_Pscav',
-                        'TS_Pcomp_Pscav','Ref_Pcomp','Ref_Pscav','Ref_Texh','Ref_Ntc','Ref_Pmax','Ref_PR','Ref_Ntc_Pscav','Ref_Pcomp_Pscav',
-                        'InjSysFault','StaInjLate','StaInjEarly','ExhValvLeak','BloCombChabr','ExhValEarOpn','ExhValLatOpn','ExhValEarlClos','ExhValLatClos']]
-        ml_ress.to_excel(mapping_loc+'mapping_res_cyl{}.xlsx'.format(i),index=False)
+    # for i in range(1,2):#------------ML.cyl_count+1
+    #     ml_ress = pd.read_csv(ml_res_loc+'ENG_2_TS_ML_res_Cyl_{}.csv'.format(str(i)),index_col=False)
+    #     ff = Faults_Mapping(ml_ress,fault_mat_loc,Efd_features,p)
+    #     ff1,fault_ids = ff.Mapping()
+    #     ml_ress = pd.concat([ml_ress,ff1[fault_ids]],axis=1)
+    #     ml_ress['Date Time'] = final_indx
+    #     #for ordering columns
+    #     ml_ress = ml_ress[['Date Time','Estimated engine load','matched_load','matched_date','deltas','TS_Pcomp','TS_Pscav','TS_Texh','TS_Ntc','TS_Pmax','TS_PR','TS_Ntc_Pscav',
+    #                     'TS_Pcomp_Pscav','Ref_Pcomp','Ref_Pscav','Ref_Texh','Ref_Ntc','Ref_Pmax','Ref_PR','Ref_Ntc_Pscav','Ref_Pcomp_Pscav',
+    #                     'InjSysFault','StaInjLate','StaInjEarly','ExhValvLeak','BloCombChabr','ExhValEarOpn','ExhValLatOpn','ExhValEarlClos','ExhValLatClos']]
+    #     ml_ress.to_excel(mapping_loc+'mapping_res_cyl{}.xlsx'.format(i),index=False)
     
     #final files
     df_res_cyl_1 = pd.read_excel(mapping_loc+'mapping_res_cyl1.xlsx')
