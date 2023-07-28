@@ -149,8 +149,8 @@ async def forecast_14days(current_user: User = Depends(get_current_active_user))
     df_res_cyl_4 = pd.read_excel(mapping_loc+'mapping_res_cyl4.xlsx')
     df_res_cyl_5 = pd.read_excel(mapping_loc+'mapping_res_cyl5.xlsx')
     df_res_cyl_6 = pd.read_excel(mapping_loc+'mapping_res_cyl6.xlsx')
-
-    return {'cyl_1':df_res_cyl_1.to_dict(orient='list'), 'cyl_2':df_res_cyl_2.to_dict(orient='list'), 'cyl_3':df_res_cyl_3.to_dict(orient='list'), 'cyl_4':df_res_cyl_4.to_dict(orient='list'), 'cyl_5':df_res_cyl_5.to_dict(orient='list'), 'cyl_6':df_res_cyl_6.to_dict(orient='list')}
+    return "success"
+   # return {'cyl_1':df_res_cyl_1.to_dict(orient='list'), 'cyl_2':df_res_cyl_2.to_dict(orient='list'), 'cyl_3':df_res_cyl_3.to_dict(orient='list'), 'cyl_4':df_res_cyl_4.to_dict(orient='list'), 'cyl_5':df_res_cyl_5.to_dict(orient='list'), 'cyl_6':df_res_cyl_6.to_dict(orient='list')}
     
 
 
