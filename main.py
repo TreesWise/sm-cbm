@@ -89,58 +89,58 @@ def data_preprocess(raw_data_path):
 
 @app.post("/forecast-14days")
 async def forecast_14days(current_user: User = Depends(get_current_active_user)):
-    data = data_preprocess('./test_data/workflow_test_data.csv')
-
-    #TS_model calling
-    ts_features_file = pd.read_csv('./utils/TS_model/feature_list.csv')
-    ts_model = './utils/TS_model/TS_model.h5' #load ts model here
-    x_scale = './utils/TS_model/TS_X.joblib'#load X_scaler model here
-    y_scale = './utils/TS_model/TS_Y.joblib'#load Y_scaler model here
-    engine_normalized = False
-    engine_number = '2'
-    ts_res_loc = './utils/TS_model/results'
-    TS = pdm_ts_model(data, ts_features_file, ts_model,x_scale,y_scale,engine_normalized,engine_number,ts_res_loc)
-    TS_result = TS.Timeseries()
-
-
-    #AUTOENCODE
-    #data preprocessing
-    # df = data_load_preprocess('test_data\\engine2_imputed.csv')
-    # df_norm_obj_test = Transform_data(df)
-    # df_norm_test = df_norm_obj_test.normalize()
-    # #final data for model
-    # df_tensor_test = torch.tensor(df_norm_test.values, dtype=torch.float32)
-    # recreated_df_test = model(df_tensor_test).cpu().detach().numpy()
-    # base_data_test = df_tensor_test.cpu().detach().numpy()
-    # faulty_date = recreation_loss(base_data_test, recreated_df_test)
-    # if len(faulty_date) > 0:
-    #     data_from_AE = df.iloc[faulty_date,:]
-    # else:
-    #     data_from_AE = df
-
-    #ML_model calling
-    Efd_features = ['Pscav','Pcomp','Pmax','Texh','Ntc','Ntc_Pscav','Pcomp_Pscav','PR']
-    engine_normalized = False
-    ml_res_loc = './utils/TS_model/results'
-    ML = pdm_ml_model(data,Efd_features,engine_normalized,ts_res_loc,engine_number,ml_res_loc)
-    ML_result = ML.ML_models()
-
-    #Fault mapping
-    final_indx = [pd.Timestamp(TS_result)+pd.Timedelta(tim,'h') for tim in range(1,TS.forecast_horizon+1)] #for getting timestamps for forecast period, here delta is hourly based
-    fault_mat_loc = './utils/Fault_Matrix/Fault_matrix.xlsx'
-    p=.2 #weight value for kpi calculations
+    # data = data_preprocess('./test_data/workflow_test_data.csv')
     mapping_loc = './utils/Fault_Matrix/results/'
-    for i in range(1,ML.cyl_count+1):
-        ml_ress = pd.read_csv(ml_res_loc+'ENG_2_TS_ML_res_Cyl_{}.csv'.format(str(i)),index_col=False)
-        ff = Faults_Mapping(ml_ress,fault_mat_loc,Efd_features,p)
-        ff1,fault_ids = ff.Mapping()
-        ml_ress = pd.concat([ml_ress,ff1[fault_ids]],axis=1)
-        ml_ress['Date Time'] = final_indx
-        #for ordering columns
-        ml_ress = ml_ress[['Date Time','Estimated engine load','matched_load','matched_date','deltas','TS_Pcomp','TS_Pscav','TS_Texh','TS_Ntc','TS_Pmax','TS_PR','TS_Ntc_Pscav',
-                        'TS_Pcomp_Pscav','Ref_Pcomp','Ref_Pscav','Ref_Texh','Ref_Ntc','Ref_Pmax','Ref_PR','Ref_Ntc_Pscav','Ref_Pcomp_Pscav',
-                        'InjSysFault','StaInjLate','StaInjEarly','ExhValvLeak','BloCombChabr','ExhValEarOpn','ExhValLatOpn','ExhValEarlClos','ExhValLatClos']]
-        ml_ress.to_excel(mapping_loc+'mapping_res_cyl{}.xlsx'.format(i),index=False)
+    # #TS_model calling
+    # ts_features_file = pd.read_csv('./utils/TS_model/feature_list.csv')
+    # ts_model = './utils/TS_model/TS_model.h5' #load ts model here
+    # x_scale = './utils/TS_model/TS_X.joblib'#load X_scaler model here
+    # y_scale = './utils/TS_model/TS_Y.joblib'#load Y_scaler model here
+    # engine_normalized = False
+    # engine_number = '2'
+    # ts_res_loc = './utils/TS_model/results'
+    # TS = pdm_ts_model(data, ts_features_file, ts_model,x_scale,y_scale,engine_normalized,engine_number,ts_res_loc)
+    # TS_result = TS.Timeseries()
+
+
+    # #AUTOENCODE
+    # #data preprocessing
+    # # df = data_load_preprocess('test_data\\engine2_imputed.csv')
+    # # df_norm_obj_test = Transform_data(df)
+    # # df_norm_test = df_norm_obj_test.normalize()
+    # # #final data for model
+    # # df_tensor_test = torch.tensor(df_norm_test.values, dtype=torch.float32)
+    # # recreated_df_test = model(df_tensor_test).cpu().detach().numpy()
+    # # base_data_test = df_tensor_test.cpu().detach().numpy()
+    # # faulty_date = recreation_loss(base_data_test, recreated_df_test)
+    # # if len(faulty_date) > 0:
+    # #     data_from_AE = df.iloc[faulty_date,:]
+    # # else:
+    # #     data_from_AE = df
+
+    # #ML_model calling
+    # Efd_features = ['Pscav','Pcomp','Pmax','Texh','Ntc','Ntc_Pscav','Pcomp_Pscav','PR']
+    # engine_normalized = False
+    # ml_res_loc = './utils/TS_model/results'
+    # ML = pdm_ml_model(data,Efd_features,engine_normalized,ts_res_loc,engine_number,ml_res_loc)
+    # ML_result = ML.ML_models()
+
+    # #Fault mapping
+    # final_indx = [pd.Timestamp(TS_result)+pd.Timedelta(tim,'h') for tim in range(1,TS.forecast_horizon+1)] #for getting timestamps for forecast period, here delta is hourly based
+    # fault_mat_loc = './utils/Fault_Matrix/Fault_matrix.xlsx'
+    # p=.2 #weight value for kpi calculations
+    # mapping_loc = './utils/Fault_Matrix/results/'
+    # for i in range(1,ML.cyl_count+1):
+    #     ml_ress = pd.read_csv(ml_res_loc+'ENG_2_TS_ML_res_Cyl_{}.csv'.format(str(i)),index_col=False)
+    #     ff = Faults_Mapping(ml_ress,fault_mat_loc,Efd_features,p)
+    #     ff1,fault_ids = ff.Mapping()
+    #     ml_ress = pd.concat([ml_ress,ff1[fault_ids]],axis=1)
+    #     ml_ress['Date Time'] = final_indx
+    #     #for ordering columns
+    #     ml_ress = ml_ress[['Date Time','Estimated engine load','matched_load','matched_date','deltas','TS_Pcomp','TS_Pscav','TS_Texh','TS_Ntc','TS_Pmax','TS_PR','TS_Ntc_Pscav',
+    #                     'TS_Pcomp_Pscav','Ref_Pcomp','Ref_Pscav','Ref_Texh','Ref_Ntc','Ref_Pmax','Ref_PR','Ref_Ntc_Pscav','Ref_Pcomp_Pscav',
+    #                     'InjSysFault','StaInjLate','StaInjEarly','ExhValvLeak','BloCombChabr','ExhValEarOpn','ExhValLatOpn','ExhValEarlClos','ExhValLatClos']]
+    #     ml_ress.to_excel(mapping_loc+'mapping_res_cyl{}.xlsx'.format(i),index=False)
     
     #final files
     df_res_cyl_1 = pd.read_excel(mapping_loc+'mapping_res_cyl1.xlsx')
