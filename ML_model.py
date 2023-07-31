@@ -3,13 +3,13 @@ import numpy as np
 from joblib import load
 import tensorflow as tf
 import os
+import time
 
 
 
 class pdm_ml_model():
     load_limit = 5 #in %
-    current_dir = os.getcwd()
-    print("---------------------",current_dir)
+    
     max_load = 84.19076333333332 #max engine load from 1 yr data for normalization
     cyl_count = 6
     utility_dict = {'Pscav':{'Limits': {'L_limit': -10, 'U_limit': 10}, 'imp_feature': list(pd.read_csv(('./utils/ML_model/imp_features/Pscav.csv') )['Features'][:24])},
@@ -53,10 +53,96 @@ class pdm_ml_model():
         joblib_models = []
         ann_models = ['Pcomp_Pscav','PR','Pmax','Ntc','Ntc_Pscav','Pcomp','Pscav','Texh']               
         load_delta = {}  
+        
+        tm1 = time.time()
+        #scaling models & ml models loading.......
+        Pcomp_Pscav_scaler_x = load("./utils/ML_model/features_scaler/"+'Pcomp_Pscav'+"_X.joblib") 
+        tm2 = time.time()
+        print('Pcomp_Pscav_x :',tm2-tm1)
+        Pcomp_Pscav_scaler_y = load("./utils/ML_model/features_scaler/"+'Pcomp_Pscav'+"_Y.joblib") 
+        tm3 = time.time()
+        print('Pcomp_Pscav_y :',tm3-tm2)
+        Pcomp_Pscav_ml_model = tf.keras.models.load_model('./utils/ML_model/model/'+'Pcomp_Pscav'+'.keras')
+        tm4 = time.time()
+        print('Pcomp_Pscav_model :',tm4-tm3)
+
+        PR_scaler_x = load("./utils/ML_model/features_scaler/"+'PR'+"_X.joblib")
+        tm5 = time.time()
+        print('PR_x :',tm5-tm4)
+        PR_scaler_y = load("./utils/ML_model/features_scaler/"+'PR'+"_Y.joblib") 
+        tm6 = time.time()
+        print('PR_y :',tm6-tm5)
+        PR_ml_model = tf.keras.models.load_model('./utils/ML_model/model/'+'PR'+'.keras')
+        tm7 = time.time()
+        print('PR_model :',tm7-tm6)
+
+        Ntc_Pscav_scaler_x = load("./utils/ML_model/features_scaler/"+'Ntc_Pscav'+"_X.joblib")
+        tm8 = time.time()
+        print('Ntc_Pscav_x :',tm8-tm7)
+        Ntc_Pscav_scaler_y = load("./utils/ML_model/features_scaler/"+'Ntc_Pscav'+"_Y.joblib") 
+        tm9 = time.time()
+        print('Ntc_Pscav_y :',tm9-tm8)
+        Ntc_Pscav_ml_model = tf.keras.models.load_model('./utils/ML_model/model/'+'Ntc_Pscav'+'.keras')
+        tm10 = time.time()
+        print('Ntc_Pscav_model :',tm10-tm9)
+
+        Pmax_scaler_x = load("./utils/ML_model/features_scaler/"+'Pmax'+"_X.joblib")
+        tm11 = time.time()
+        print('Pmax_x :',tm11-tm10)
+        Pmax_scaler_y = load("./utils/ML_model/features_scaler/"+'Pmax'+"_Y.joblib")
+        tm12 = time.time() 
+        print('Pmax_y :',tm12-tm11)
+        Pmax_ml_model = tf.keras.models.load_model('./utils/ML_model/model/'+'Pmax'+'.keras')
+        tm13 = time.time()
+        print('Pmax_model :',tm13-tm12)
+
+        Texh_scaler_x = load("./utils/ML_model/features_scaler/"+'Texh'+"_X.joblib")
+        tm14 = time.time()
+        print('Texh_x :',tm14-tm13)
+        Texh_scaler_y = load("./utils/ML_model/features_scaler/"+'Texh'+"_Y.joblib")
+        tm15 = time.time() 
+        print('Texh_y :',tm15-tm14)
+        Texh_ml_model = tf.keras.models.load_model('./utils/ML_model/model/'+'Texh'+'.keras')
+        tm16 = time.time()
+        print('Texh_model :',tm16-tm15)
+
+        Ntc_scaler_x = load("./utils/ML_model/features_scaler/"+'Ntc'+"_X.joblib")
+        tm17 = time.time()
+        print('Ntc_x :',tm17-tm16)
+        Ntc_scaler_y = load("./utils/ML_model/features_scaler/"+'Ntc'+"_Y.joblib") 
+        tm18 = time.time()
+        print('Ntc_y :',tm18-tm17)
+        Ntc_ml_model = tf.keras.models.load_model('./utils/ML_model/model/'+'Ntc'+'.keras')
+        tm19 = time.time()
+        print('Ntc_model :',tm19-tm18)
+
+        Pcomp_scaler_x = load("./utils/ML_model/features_scaler/"+'Pcomp'+"_X.joblib")
+        tm20 = time.time()
+        print('Pcom_x :',tm20-tm19)
+        Pcomp_scaler_y = load("./utils/ML_model/features_scaler/"+'Pcomp'+"_Y.joblib")
+        tm21 = time.time()
+        print('Pcom_y :',tm21-tm20)
+        Pcomp_ml_model = tf.keras.models.load_model('./utils/ML_model/model/'+'Pcomp'+'.keras')
+        tm22 = time.time()
+        print('Pcom_model :',tm22-tm21)
+
+        Pscav_scaler_x = load("./utils/ML_model/features_scaler/"+'Pscav'+"_X.joblib")
+        tm23 = time.time()
+        print('Pscav_x :',tm23-tm22)
+        Pscav_scaler_y = load("./utils/ML_model/features_scaler/"+'Pscav'+"_Y.joblib")
+        tm24 = time.time()
+        print('Pscav_y :',tm24-tm23)
+        Pscav_ml_model = tf.keras.models.load_model('./utils/ML_model/model/'+'Pscav'+'.keras')
+        tm25 = time.time()
+        print('Pscav_model :',tm25-tm24)
+
+        print('Total time for scalers and ml models :',tm25-tm1) 
+        
         for cyl in range(1,self.cyl_count+1):
-            cyl_df = pd.read_csv(self.ts_res+'ENG_{}_TS_res_Cyl_{}.csv'.format(self.engine_number,cyl))
+            cyl_df = pd.read_csv(self.ts_res+'ENG_{}_TS_res_Cyl_{}.csv'.format(self.engine_number,cyl),index_col=False)
             # load_ranges = list(cyl_df['Engine load range'].unique())          
-            load_ranges = list(cyl_df['Estimated engine load'].unique())                  
+            load_ranges = list(cyl_df['Estimated engine load'].unique())
+            tm26 = time.time()                  
             for loads in load_ranges:
                 load_delta[loads] = abs(df2['Estimated engine load']-loads)  
                 load_l_limit = loads*((100-self.load_limit)/100)
@@ -87,8 +173,10 @@ class pdm_ml_model():
                     cyl_df.loc[cyl_df[cyl_df['Estimated engine load']==loads].index,'matched_load'] = ''
                     cyl_df.loc[cyl_df[cyl_df['Estimated engine load']==loads].index,'matched_date'] = ''
                     cyl_df.loc[cyl_df[cyl_df['Estimated engine load']==loads].index,'deltas'] = ''
+            tm27 = time.time() 
+            print('Time for matching loads for cyl',str(cyl),' :',tm27-tm26)       
             df = df2.loc[list(cyl_df['matched_date'])]
-            # Pcomp_Pscav
+            
             df['Cyl. lub. distribution share below_PERC'] = (df['Cyl. lub. distribution share below piston']/df['Cyl. lub. distribution share into piston'])*100
             df['Cyl. lub. distribution share above_PERC'] = (df['Cyl. lub. distribution share above piston']/df['Cyl. lub. distribution share into piston'])*100
             df['Fuel Rail Pressure_diff'] = df['Mean Fuel Rail Pressure (display)'] - df['Main Fuel Rail Pressure']
@@ -103,8 +191,6 @@ class pdm_ml_model():
             df['Firing Pr. Balancing Injection Offset Cyl_AVG'] = (df['Firing Pr. Balancing Injection Offset Cyl #01']+df['Firing Pr. Balancing Injection Offset Cyl #02']+
                                                                         df['Firing Pr. Balancing Injection Offset Cyl #03']+df['Firing Pr. Balancing Injection Offset Cyl #04']+
                                                                         df['Firing Pr. Balancing Injection Offset Cyl #05']+df['Firing Pr. Balancing Injection Offset Cyl #06'])/6
-
-
             df['Lubrication Oil Feed Rate Cyl AVG'] = (df['Lubrication Oil Feed Rate Cyl #01']+df['Lubrication Oil Feed Rate Cyl #02']+
                                                             df['Lubrication Oil Feed Rate Cyl #03']+df['Lubrication Oil Feed Rate Cyl #04']+
                                                             df['Lubrication Oil Feed Rate Cyl #05']+df['Lubrication Oil Feed Rate Cyl #06'])/6
@@ -114,326 +200,90 @@ class pdm_ml_model():
             df['Exhaust Valve Closing Angle Setpoint Cyl AVG'] = (df['Exhaust Valve Closing Angle Setpoint Cyl #01']+df['Exhaust Valve Closing Angle Setpoint Cyl #02']+
                                                                         df['Exhaust Valve Closing Angle Setpoint Cyl #03']+df['Exhaust Valve Closing Angle Setpoint Cyl #04']+
                                                                         df['Exhaust Valve Closing Angle Setpoint Cyl #05']+df['Exhaust Valve Closing Angle Setpoint Cyl #06'])/6
-            # PR
-            df['Fuel Rail Pressure_diff'] = df['Mean Fuel Rail Pressure (display)'] - df['Main Fuel Rail Pressure']
-            df['GAV Timing Set Point Cyl AVG'] = (df['GAV Timing Set Point Cyl #01']+df['GAV Timing Set Point Cyl #02']+
-                                                        df['GAV Timing Set Point Cyl #03']+df['GAV Timing Set Point Cyl #04']+
-                                                        df['GAV Timing Set Point Cyl #05']+df['GAV Timing Set Point Cyl #06'])/6
-            df['Cyl. lub. distribution share below_PERC'] = (df['Cyl. lub. distribution share below piston']/df['Cyl. lub. distribution share into piston'])*100
-            df['Cyl. lub. distribution share above_PERC'] = (df['Cyl. lub. distribution share above piston']/df['Cyl. lub. distribution share into piston'])*100
-            df['PFI Timing Set Point Cyl AVG'] = (df['PFI Timing Set Point Cyl #01']+df['PFI Timing Set Point Cyl #02']+
-                                                            df['PFI Timing Set Point Cyl #03']+df['PFI Timing Set Point Cyl #04']+
-                                                            df['PFI Timing Set Point Cyl #05']+df['PFI Timing Set Point Cyl #06'])/6
             df['PFI Duration Set Point Cyl AVG'] = (df['PFI Duration Set Point Cyl #01']+df['PFI Duration Set Point Cyl #02']+
                                                         df['PFI Duration Set Point Cyl #03']+df['PFI Duration Set Point Cyl #04']+
                                                         df['PFI Duration Set Point Cyl #05']+df['PFI Duration Set Point Cyl #06'])/6
             df['Pilot Fuel Pressure diff'] = df['Pilot Fuel Pressure A']-df['Pilot Fuel Pressure B']
-            df['Exhaust Valve Closing Angle Setpoint Cyl AVG'] = (df['Exhaust Valve Closing Angle Setpoint Cyl #01']+df['Exhaust Valve Closing Angle Setpoint Cyl #02']+
-                                                                        df['Exhaust Valve Closing Angle Setpoint Cyl #03']+df['Exhaust Valve Closing Angle Setpoint Cyl #04']+
-                                                                        df['Exhaust Valve Closing Angle Setpoint Cyl #05']+df['Exhaust Valve Closing Angle Setpoint Cyl #06'])/6
             df['Lubrication Deadtime Feedback Cyl AVG'] = (df['Lubrication Deadtime Feedback Cyl #01']+df['Lubrication Deadtime Feedback Cyl #02']+
                                                                 df['Lubrication Deadtime Feedback Cyl #03']+df['Lubrication Deadtime Feedback Cyl #04']+
                                                                 df['Lubrication Deadtime Feedback Cyl #05']+df['Lubrication Deadtime Feedback Cyl #06'])/6
-            df['Fuel Pump Setpoint_AVG'] = (df['Fuel Pump Setpoint Master Controller']+df['Fuel Pump Setpoint Slave Controller'])/2
-            df['Fuel Pressure Actuator Setpoint_AVG'] = (df['Fuel Pressure Actuator Setpoint 1']+df['Fuel Pressure Actuator Setpoint 2']+df['Fuel Pressure Actuator Setpoint 3'])/3
             df['Start of Injection Cyl_AVG'] = (df['Start of Injection Cyl #01']+df['Start of Injection Cyl #02']+df['Start of Injection Cyl #03']+df['Start of Injection Cyl #04']+
                                                 df['Start of Injection Cyl #05']+df['Start of Injection Cyl #06'])/6
             df['Scavenge Air Temp. Piston Underside Cyl_AVG'] = (df['Scavenge Air Temp. Piston Underside Cyl #01.1']+df['Scavenge Air Temp. Piston Underside Cyl #02.1']+df['Scavenge Air Temp. Piston Underside Cyl #03.1']+df['Scavenge Air Temp. Piston Underside Cyl #04.1']+
                                                                 df['Scavenge Air Temp. Piston Underside Cyl #05.1']+df['Scavenge Air Temp. Piston Underside Cyl #06.1'])/6
-            #Ntc_Pscav
-            df['Fuel Rail Pressure_diff'] = df['Mean Fuel Rail Pressure (display)'] - df['Main Fuel Rail Pressure']
-            df['GAV Timing Set Point Cyl AVG'] = (df['GAV Timing Set Point Cyl #01']+df['GAV Timing Set Point Cyl #02']+
-                                                        df['GAV Timing Set Point Cyl #03']+df['GAV Timing Set Point Cyl #04']+
-                                                        df['GAV Timing Set Point Cyl #05']+df['GAV Timing Set Point Cyl #06'])/6
-            df['Fuel Pressure Actuator Setpoint_AVG'] = (df['Fuel Pressure Actuator Setpoint 1']+df['Fuel Pressure Actuator Setpoint 2']+df['Fuel Pressure Actuator Setpoint 3'])/3
-            df['PFI Timing Set Point Cyl AVG'] = (df['PFI Timing Set Point Cyl #01']+df['PFI Timing Set Point Cyl #02']+
-                                                            df['PFI Timing Set Point Cyl #03']+df['PFI Timing Set Point Cyl #04']+
-                                                            df['PFI Timing Set Point Cyl #05']+df['PFI Timing Set Point Cyl #06'])/6
-            df['Cyl. lub. distribution share below_PERC'] = (df['Cyl. lub. distribution share below piston']/df['Cyl. lub. distribution share into piston'])*100
-            df['Cyl. lub. distribution share above_PERC'] = (df['Cyl. lub. distribution share above piston']/df['Cyl. lub. distribution share into piston'])*100
-            df['PFI Duration Set Point Cyl AVG'] = (df['PFI Duration Set Point Cyl #01']+df['PFI Duration Set Point Cyl #02']+
-                                                        df['PFI Duration Set Point Cyl #03']+df['PFI Duration Set Point Cyl #04']+
-                                                        df['PFI Duration Set Point Cyl #05']+df['PFI Duration Set Point Cyl #06'])/6
-            df['Exhaust Valve Closing Angle Setpoint Cyl AVG'] = (df['Exhaust Valve Closing Angle Setpoint Cyl #01']+df['Exhaust Valve Closing Angle Setpoint Cyl #02']+
-                                                                        df['Exhaust Valve Closing Angle Setpoint Cyl #03']+df['Exhaust Valve Closing Angle Setpoint Cyl #04']+
-                                                                        df['Exhaust Valve Closing Angle Setpoint Cyl #05']+df['Exhaust Valve Closing Angle Setpoint Cyl #06'])/6
-            df['Fuel Pump Setpoint_AVG'] = (df['Fuel Pump Setpoint Master Controller']+df['Fuel Pump Setpoint Slave Controller'])/2
-            df['Firing Pr. Balancing Injection Offset Cyl AVG'] = (df['Firing Pr. Balancing Injection Offset Cyl #01']+df['Firing Pr. Balancing Injection Offset Cyl #02']+
-                                                                        df['Firing Pr. Balancing Injection Offset Cyl #03']+df['Firing Pr. Balancing Injection Offset Cyl #04']+
-                                                                        df['Firing Pr. Balancing Injection Offset Cyl #05']+df['Firing Pr. Balancing Injection Offset Cyl #06'])/6
-            #Pmax
-            df['Cyl. lub. distribution share below_PERC'] = (df['Cyl. lub. distribution share below piston']/df['Cyl. lub. distribution share into piston'])*100
-            df['Cyl. lub. distribution share above_PERC'] = (df['Cyl. lub. distribution share above piston']/df['Cyl. lub. distribution share into piston'])*100
-            df['GAV Timing Set Point Cyl AVG'] = (df['GAV Timing Set Point Cyl #01']+df['GAV Timing Set Point Cyl #02']+
-                                                        df['GAV Timing Set Point Cyl #03']+df['GAV Timing Set Point Cyl #04']+
-                                                        df['GAV Timing Set Point Cyl #05']+df['GAV Timing Set Point Cyl #06'])/6
-            df['Exh. valve opening angle Cyl AVG'] = (df['Exh. valve opening angle Cyl #01']+df['Exh. valve opening angle Cyl #02']+
-                                                            df['Exh. valve opening angle Cyl #03']+df['Exh. valve opening angle Cyl #04']+
-                                                            df['Exh. valve opening angle Cyl #05']+df['Exh. valve opening angle Cyl #06'])/6
-            df['PFI Duration Set Point Cyl AVG'] = (df['PFI Duration Set Point Cyl #01']+df['PFI Duration Set Point Cyl #02']+
-                                                        df['PFI Duration Set Point Cyl #03']+df['PFI Duration Set Point Cyl #04']+
-                                                        df['PFI Duration Set Point Cyl #05']+df['PFI Duration Set Point Cyl #06'])/6
-            df['PFI Timing Set Point Cyl AVG'] = (df['PFI Timing Set Point Cyl #01']+df['PFI Timing Set Point Cyl #02']+
-                                                            df['PFI Timing Set Point Cyl #03']+df['PFI Timing Set Point Cyl #04']+
-                                                            df['PFI Timing Set Point Cyl #05']+df['PFI Timing Set Point Cyl #06'])/6
-            df['Exhaust Valve Closing Angle Setpoint Cyl AVG'] = (df['Exhaust Valve Closing Angle Setpoint Cyl #01']+df['Exhaust Valve Closing Angle Setpoint Cyl #02']+
-                                                                        df['Exhaust Valve Closing Angle Setpoint Cyl #03']+df['Exhaust Valve Closing Angle Setpoint Cyl #04']+
-                                                                        df['Exhaust Valve Closing Angle Setpoint Cyl #05']+df['Exhaust Valve Closing Angle Setpoint Cyl #06'])/6
-            df['Fuel Rail Pressure_diff'] = df['Mean Fuel Rail Pressure (display)'] - df['Main Fuel Rail Pressure']
-            #Texh
-            df['Cyl. lub. distribution share below_PERC'] = (df['Cyl. lub. distribution share below piston']/df['Cyl. lub. distribution share into piston'])*100
-            df['Cyl. lub. distribution share above_PERC'] = (df['Cyl. lub. distribution share above piston']/df['Cyl. lub. distribution share into piston'])*100
-            df['GAV Timing Set Point Cyl AVG'] = (df['GAV Timing Set Point Cyl #01']+df['GAV Timing Set Point Cyl #02']+
-                                                        df['GAV Timing Set Point Cyl #03']+df['GAV Timing Set Point Cyl #04']+
-                                                        df['GAV Timing Set Point Cyl #05']+df['GAV Timing Set Point Cyl #06'])/6
-            df['Exh. valve opening angle Cyl AVG'] = (df['Exh. valve opening angle Cyl #01']+df['Exh. valve opening angle Cyl #02']+
-                                                            df['Exh. valve opening angle Cyl #03']+df['Exh. valve opening angle Cyl #04']+
-                                                            df['Exh. valve opening angle Cyl #05']+df['Exh. valve opening angle Cyl #06'])/6
-            df['PFI Duration Set Point Cyl AVG'] = (df['PFI Duration Set Point Cyl #01']+df['PFI Duration Set Point Cyl #02']+
-                                                        df['PFI Duration Set Point Cyl #03']+df['PFI Duration Set Point Cyl #04']+
-                                                        df['PFI Duration Set Point Cyl #05']+df['PFI Duration Set Point Cyl #06'])/6
-            df['PFI Timing Set Point Cyl AVG'] = (df['PFI Timing Set Point Cyl #01']+df['PFI Timing Set Point Cyl #02']+
-                                                            df['PFI Timing Set Point Cyl #03']+df['PFI Timing Set Point Cyl #04']+
-                                                            df['PFI Timing Set Point Cyl #05']+df['PFI Timing Set Point Cyl #06'])/6
-            df['Exhaust Valve Closing Angle Setpoint Cyl AVG'] = (df['Exhaust Valve Closing Angle Setpoint Cyl #01']+df['Exhaust Valve Closing Angle Setpoint Cyl #02']+
-                                                                        df['Exhaust Valve Closing Angle Setpoint Cyl #03']+df['Exhaust Valve Closing Angle Setpoint Cyl #04']+
-                                                                        df['Exhaust Valve Closing Angle Setpoint Cyl #05']+df['Exhaust Valve Closing Angle Setpoint Cyl #06'])/6
-            df['Fuel Rail Pressure_diff'] = df['Mean Fuel Rail Pressure (display)'] - df['Main Fuel Rail Pressure']
-            #Ntc
-            df['Cyl. lub. distribution share below_PERC'] = (df['Cyl. lub. distribution share below piston']/df['Cyl. lub. distribution share into piston'])*100
-            df['Cyl. lub. distribution share above_PERC'] = (df['Cyl. lub. distribution share above piston']/df['Cyl. lub. distribution share into piston'])*100
-            df['GAV Timing Set Point Cyl AVG'] = (df['GAV Timing Set Point Cyl #01']+df['GAV Timing Set Point Cyl #02']+
-                                                        df['GAV Timing Set Point Cyl #03']+df['GAV Timing Set Point Cyl #04']+
-                                                        df['GAV Timing Set Point Cyl #05']+df['GAV Timing Set Point Cyl #06'])/6
-            df['Exh. valve opening angle Cyl AVG'] = (df['Exh. valve opening angle Cyl #01']+df['Exh. valve opening angle Cyl #02']+
-                                                            df['Exh. valve opening angle Cyl #03']+df['Exh. valve opening angle Cyl #04']+
-                                                            df['Exh. valve opening angle Cyl #05']+df['Exh. valve opening angle Cyl #06'])/6
-            df['PFI Duration Set Point Cyl AVG'] = (df['PFI Duration Set Point Cyl #01']+df['PFI Duration Set Point Cyl #02']+
-                                                        df['PFI Duration Set Point Cyl #03']+df['PFI Duration Set Point Cyl #04']+
-                                                        df['PFI Duration Set Point Cyl #05']+df['PFI Duration Set Point Cyl #06'])/6
-            df['PFI Timing Set Point Cyl AVG'] = (df['PFI Timing Set Point Cyl #01']+df['PFI Timing Set Point Cyl #02']+
-                                                            df['PFI Timing Set Point Cyl #03']+df['PFI Timing Set Point Cyl #04']+
-                                                            df['PFI Timing Set Point Cyl #05']+df['PFI Timing Set Point Cyl #06'])/6
-            df['Exhaust Valve Closing Angle Setpoint Cyl AVG'] = (df['Exhaust Valve Closing Angle Setpoint Cyl #01']+df['Exhaust Valve Closing Angle Setpoint Cyl #02']+
-                                                                        df['Exhaust Valve Closing Angle Setpoint Cyl #03']+df['Exhaust Valve Closing Angle Setpoint Cyl #04']+
-                                                                        df['Exhaust Valve Closing Angle Setpoint Cyl #05']+df['Exhaust Valve Closing Angle Setpoint Cyl #06'])/6
-            df['Fuel Rail Pressure_diff'] = df['Mean Fuel Rail Pressure (display)'] - df['Main Fuel Rail Pressure']
-            #Pcomp
-            df['Cyl. lub. distribution share below_PERC'] = (df['Cyl. lub. distribution share below piston']/df['Cyl. lub. distribution share into piston'])*100
-            df['Cyl. lub. distribution share above_PERC'] = (df['Cyl. lub. distribution share above piston']/df['Cyl. lub. distribution share into piston'])*100
-            df['GAV Timing Set Point Cyl AVG'] = (df['GAV Timing Set Point Cyl #01']+df['GAV Timing Set Point Cyl #02']+
-                                                        df['GAV Timing Set Point Cyl #03']+df['GAV Timing Set Point Cyl #04']+
-                                                        df['GAV Timing Set Point Cyl #05']+df['GAV Timing Set Point Cyl #06'])/6
-            df['Exh. valve opening angle Cyl AVG'] = (df['Exh. valve opening angle Cyl #01']+df['Exh. valve opening angle Cyl #02']+
-                                                            df['Exh. valve opening angle Cyl #03']+df['Exh. valve opening angle Cyl #04']+
-                                                            df['Exh. valve opening angle Cyl #05']+df['Exh. valve opening angle Cyl #06'])/6
-            df['PFI Duration Set Point Cyl AVG'] = (df['PFI Duration Set Point Cyl #01']+df['PFI Duration Set Point Cyl #02']+
-                                                        df['PFI Duration Set Point Cyl #03']+df['PFI Duration Set Point Cyl #04']+
-                                                        df['PFI Duration Set Point Cyl #05']+df['PFI Duration Set Point Cyl #06'])/6
-            df['PFI Timing Set Point Cyl AVG'] = (df['PFI Timing Set Point Cyl #01']+df['PFI Timing Set Point Cyl #02']+
-                                                            df['PFI Timing Set Point Cyl #03']+df['PFI Timing Set Point Cyl #04']+
-                                                            df['PFI Timing Set Point Cyl #05']+df['PFI Timing Set Point Cyl #06'])/6
-            df['Exhaust Valve Closing Angle Setpoint Cyl AVG'] = (df['Exhaust Valve Closing Angle Setpoint Cyl #01']+df['Exhaust Valve Closing Angle Setpoint Cyl #02']+
-                                                                        df['Exhaust Valve Closing Angle Setpoint Cyl #03']+df['Exhaust Valve Closing Angle Setpoint Cyl #04']+
-                                                                        df['Exhaust Valve Closing Angle Setpoint Cyl #05']+df['Exhaust Valve Closing Angle Setpoint Cyl #06'])/6
-            df['Fuel Rail Pressure_diff'] = df['Mean Fuel Rail Pressure (display)'] - df['Main Fuel Rail Pressure']
-            #Pscav
-            df['Exh. valve opening angle Cyl AVG'] = (df['Exh. valve opening angle Cyl #01']+df['Exh. valve opening angle Cyl #02']+
-                                                            df['Exh. valve opening angle Cyl #03']+df['Exh. valve opening angle Cyl #04']+
-                                                            df['Exh. valve opening angle Cyl #05']+df['Exh. valve opening angle Cyl #06'])/6
-            df['GAV Timing Set Point Cyl AVG'] = (df['GAV Timing Set Point Cyl #01']+df['GAV Timing Set Point Cyl #02']+
-                                                        df['GAV Timing Set Point Cyl #03']+df['GAV Timing Set Point Cyl #04']+
-                                                        df['GAV Timing Set Point Cyl #05']+df['GAV Timing Set Point Cyl #06'])/6
-            df['Exhaust Valve Closing Angle Setpoint Cyl AVG'] = (df['Exhaust Valve Closing Angle Setpoint Cyl #01']+df['Exhaust Valve Closing Angle Setpoint Cyl #02']+
-                                                                        df['Exhaust Valve Closing Angle Setpoint Cyl #03']+df['Exhaust Valve Closing Angle Setpoint Cyl #04']+
-                                                                        df['Exhaust Valve Closing Angle Setpoint Cyl #05']+df['Exhaust Valve Closing Angle Setpoint Cyl #06'])/6
-            df['PFI Timing Set Point Cyl AVG'] = (df['PFI Timing Set Point Cyl #01']+df['PFI Timing Set Point Cyl #02']+
-                                                            df['PFI Timing Set Point Cyl #03']+df['PFI Timing Set Point Cyl #04']+
-                                                            df['PFI Timing Set Point Cyl #05']+df['PFI Timing Set Point Cyl #06'])/6
-            df['PFI Duration Set Point Cyl AVG'] = (df['PFI Duration Set Point Cyl #01']+df['PFI Duration Set Point Cyl #02']+
-                                                        df['PFI Duration Set Point Cyl #03']+df['PFI Duration Set Point Cyl #04']+
-                                                        df['PFI Duration Set Point Cyl #05']+df['PFI Duration Set Point Cyl #06'])/6
-            df['Cyl. lub. distribution share below_PERC'] = (df['Cyl. lub. distribution share below piston']/df['Cyl. lub. distribution share into piston'])*100
-            df['Cyl. lub. distribution share above_PERC'] = (df['Cyl. lub. distribution share above piston']/df['Cyl. lub. distribution share into piston'])*100
-            df['Fuel Rail Pressure_diff'] = df['Mean Fuel Rail Pressure (display)'] - df['Main Fuel Rail Pressure']
-
+            df['Firing Pr. Balancing Injection Offset Cyl AVG'] = df['Firing Pr. Balancing Injection Offset Cyl_AVG']
+            
             for efds in self.Efd_features:# ['Pscav','Pcomp','Pmax','Texh','Ntc','Ntc_Pscav','Pcomp_Pscav','PR']
                 if efds == 'Pcomp_Pscav': #EFD1
                     print('Pcomp_Pscav')                  
                     model_inputs  = df[self.utility_dict[efds]['imp_feature']]
                     #Apply scaling here for new inputs
-                    scaler_x = load("./utils/ML_model/features_scaler/"+efds+"_X.joblib")
-                    model_inputs = pd.DataFrame(scaler_x.transform(np.asarray(model_inputs)),columns=self.utility_dict[efds]['imp_feature'])
-                    '''scaler_x = scaler.fit(x_train)
-                    from joblib import dump, load
-                    dump(scaler_x, "./Scaling_models/Pcomp_Pscav.joblib")
-                    scaler_x = []
-                    scaler_x = load("./Scaling_models/Pcomp_Pscav.joblib")
-                    x_train = pd.DataFrame(scaler_x.transform(x_train),columns=x_train.columns)'''
-                    if efds in ann_models: #for ANN models
-                        ml_model = tf.keras.models.load_model('./utils/ML_model/model/'+efds+'.keras', compile=False)
-                    elif efds in joblib_models:  
-                        ml_model =  load("./utils/ML_model/model/"+efds+".joblib")#for classical ML models
-                    y_pred = ml_model.predict(model_inputs)
-                    scaler_y = load("./utils/ML_model/features_scaler/"+efds+"_Y.joblib")
-                    y_pred = scaler_y.inverse_transform(y_pred.reshape(-1,1))
-                    # ml_output_dict['Ref_'+efds] =  y_pred.tolist()[0]
-                    # print('index -',cyl_df[cyl_df['Engine load range']==loads].index)
-                    # print('Output -',y_pred.tolist()[0])
+                    model_inputs = pd.DataFrame(Pcomp_Pscav_scaler_x.transform(np.asarray(model_inputs)),columns=self.utility_dict[efds]['imp_feature'])
+                    y_pred = Pcomp_Pscav_ml_model.predict(model_inputs)
+                    y_pred = Pcomp_Pscav_scaler_y.inverse_transform(y_pred.reshape(-1,1))
                     cyl_df['Ref_'+efds]  =  [re[0] for re in y_pred.tolist()]
                 elif efds == 'PR': #EFD2
                     print('PR')
                     model_inputs  = df[self.utility_dict[efds]['imp_feature']]
-                    #Apply scaling here for new inputs
-                    scaler_x = load("./utils/ML_model/features_scaler/"+efds+"_X.joblib")
-                    model_inputs = pd.DataFrame(scaler_x.transform(np.asarray(model_inputs)),columns=self.utility_dict[efds]['imp_feature'])
-                    '''scaler_x = scaler.fit(x_train)
-                    from joblib import dump, load
-                    dump(scaler_x, "./Scaling_models/Pcomp_Pscav.joblib")
-                    scaler_x = []
-                    scaler_x = load("./Scaling_models/Pcomp_Pscav.joblib")
-                    x_train = pd.DataFrame(scaler_x.transform(x_train),columns=x_train.columns)'''
-                    if efds in ann_models: #for ANN models
-                        ml_model = tf.keras.models.load_model('./utils/ML_model/model/'+efds+'.keras', compile=False)
-                    elif efds in joblib_models:  
-                        ml_model =  load("./utils/ML_model/model/"+efds+".joblib")#for classical ML models
-                    y_pred = ml_model.predict(model_inputs)
-                    scaler_y = load("./utils/ML_model/features_scaler/"+efds+"_Y.joblib")
-                    y_pred = scaler_y.inverse_transform(y_pred.reshape(-1,1))
-                    # ml_output_dict['Ref_'+efds] =  y_pred.tolist()[0]
+                    #Apply scaling here for new inputs                   
+                    model_inputs = pd.DataFrame(PR_scaler_x.transform(np.asarray(model_inputs)),columns=self.utility_dict[efds]['imp_feature'])
+                    y_pred = PR_ml_model.predict(model_inputs)                 
+                    y_pred = PR_scaler_y.inverse_transform(y_pred.reshape(-1,1))
                     cyl_df['Ref_'+efds]  =  [re[0] for re in y_pred.tolist()]
                 elif efds == 'Ntc_Pscav': #EFD3
                     print('Ntc_Pscav')                   
                     model_inputs  = df[self.utility_dict[efds]['imp_feature']]
-                    #Apply scaling here for new inputs
-                    scaler_x = load("./utils/ML_model/features_scaler/"+efds+"_X.joblib")
-                    model_inputs = pd.DataFrame(scaler_x.transform(np.asarray(model_inputs)),columns=self.utility_dict[efds]['imp_feature'])
-                    '''scaler_x = scaler.fit(x_train)
-                    from joblib import dump, load
-                    dump(scaler_x, "./Scaling_models/Pcomp_Pscav.joblib")
-                    scaler_x = []
-                    scaler_x = load("./Scaling_models/Pcomp_Pscav.joblib")
-                    x_train = pd.DataFrame(scaler_x.transform(x_train),columns=x_train.columns)'''
-                    if efds in ann_models: #for ANN models
-                        ml_model = tf.keras.models.load_model('./utils/ML_model/model/'+efds+'.keras', compile=False)
-                    elif efds in joblib_models:  
-                        ml_model =  load("./utils/ML_model/model/"+efds+".joblib")#for classical ML models
-                    y_pred = ml_model.predict(model_inputs)
-                    scaler_y = load("./utils/ML_model/features_scaler/"+efds+"_Y.joblib")
-                    y_pred = scaler_y.inverse_transform(y_pred.reshape(-1,1))
-                    # ml_output_dict['Ref_'+efds] =  y_pred.tolist()[0]
+                    #Apply scaling here for new inputs                    
+                    model_inputs = pd.DataFrame(Ntc_Pscav_scaler_x.transform(np.asarray(model_inputs)),columns=self.utility_dict[efds]['imp_feature'])
+                    y_pred = Ntc_Pscav_ml_model.predict(model_inputs)                    
+                    y_pred = Ntc_Pscav_scaler_y.inverse_transform(y_pred.reshape(-1,1))
                     cyl_df['Ref_'+efds]  =  [re[0] for re in y_pred.tolist()]
                 #till here model retunned    
                 elif efds == 'Pmax': #EFD4
                     print('Pmax')                   
                     model_inputs  = df[self.utility_dict[efds]['imp_feature']]
-                    #Apply scaling here for new inputs
-                    scaler_x = load("./utils/ML_model/features_scaler/"+efds+"_X.joblib")
-                    model_inputs = pd.DataFrame(scaler_x.transform(np.asarray(model_inputs)),columns=self.utility_dict[efds]['imp_feature'])
-                    '''scaler_x = scaler.fit(x_train)
-                    from joblib import dump, load
-                    dump(scaler_x, "./Scaling_models/Pcomp_Pscav.joblib")
-                    scaler_x = []
-                    scaler_x = load("./Scaling_models/Pcomp_Pscav.joblib")
-                    x_train = pd.DataFrame(scaler_x.transform(x_train),columns=x_train.columns)'''
-                    if efds in ann_models: #for ANN models
-                        ml_model = tf.keras.models.load_model('./utils/ML_model/model/'+efds+'.keras', compile=False)
-                    elif efds in joblib_models:  
-                        ml_model =  load("./utils/ML_model/model/"+efds+".joblib")#for classical ML models
-                    y_pred = ml_model.predict(model_inputs)
-                    scaler_y = load("./utils/ML_model/features_scaler/"+efds+"_Y.joblib")
-                    y_pred = scaler_y.inverse_transform(y_pred.reshape(-1,1))
-                    # ml_output_dict['Ref_'+efds] =  y_pred.tolist()[0]
+                    #Apply scaling here for new inputs                    
+                    model_inputs = pd.DataFrame(Pmax_scaler_x.transform(np.asarray(model_inputs)),columns=self.utility_dict[efds]['imp_feature'])
+                    y_pred = Pmax_ml_model.predict(model_inputs)                  
+                    y_pred = Pmax_scaler_y.inverse_transform(y_pred.reshape(-1,1))
                     cyl_df['Ref_'+efds]  =  [re[0] for re in y_pred.tolist()]
                 elif efds == 'Texh': #EFD5
                     print('Texh')                    
                     model_inputs  = df[self.utility_dict[efds]['imp_feature']]
-                    #Apply scaling here for new inputs
-                    scaler_x = load("./utils/ML_model/features_scaler/"+efds+"_X.joblib")
-                    model_inputs = pd.DataFrame(scaler_x.transform(np.asarray(model_inputs)),columns=self.utility_dict[efds]['imp_feature'])
-                    '''scaler_x = scaler.fit(x_train)
-                    from joblib import dump, load
-                    dump(scaler_x, "./Scaling_models/Pcomp_Pscav.joblib")
-                    scaler_x = []
-                    scaler_x = load("./Scaling_models/Pcomp_Pscav.joblib")
-                    x_train = pd.DataFrame(scaler_x.transform(x_train),columns=x_train.columns)'''
-                    if efds in ann_models: #for ANN models
-                        ml_model = tf.keras.models.load_model('./utils/ML_model/model/'+efds+'.keras', compile=False)
-                    elif efds in joblib_models:  
-                        ml_model =  load("./utils/ML_model/model/"+efds+".joblib")#for classical ML models
-                    y_pred = ml_model.predict(model_inputs)
-                    scaler_y = load("./utils/ML_model/features_scaler/"+efds+"_Y.joblib")
-                    y_pred = scaler_y.inverse_transform(y_pred.reshape(-1,1))
-                    # ml_output_dict['Ref_'+efds] =  y_pred.tolist()[0]
+                    #Apply scaling here for new inputs                
+                    model_inputs = pd.DataFrame(Texh_scaler_x.transform(np.asarray(model_inputs)),columns=self.utility_dict[efds]['imp_feature'])
+                    y_pred = Texh_ml_model.predict(model_inputs)                    
+                    y_pred = Texh_scaler_y.inverse_transform(y_pred.reshape(-1,1))
                     cyl_df['Ref_'+efds]  =  [re[0] for re in y_pred.tolist()]
                 elif efds == 'Ntc': #EFD6
                     print('Ntc')                   
                     model_inputs  = df[self.utility_dict[efds]['imp_feature']]
-                    #Apply scaling here for new inputs
-                    scaler_x = load("./utils/ML_model/features_scaler/"+efds+"_X.joblib")
-                    model_inputs = pd.DataFrame(scaler_x.transform(np.asarray(model_inputs)),columns=self.utility_dict[efds]['imp_feature'])
-                    '''scaler_x = scaler.fit(x_train)
-                    from joblib import dump, load
-                    dump(scaler_x, "./Scaling_models/Pcomp_Pscav.joblib")
-                    scaler_x = []
-                    scaler_x = load("./Scaling_models/Pcomp_Pscav.joblib")
-                    x_train = pd.DataFrame(scaler_x.transform(x_train),columns=x_train.columns)'''
-                    if efds in ann_models: #for ANN models
-                        ml_model = tf.keras.models.load_model('./utils/ML_model/model/'+efds+'.keras', compile=False)
-                    elif efds in joblib_models:  
-                        ml_model =  load("./utils/ML_model/model/"+efds+".joblib")#for classical ML models
-                    y_pred = ml_model.predict(model_inputs)
-                    scaler_y = load("./utils/ML_model/features_scaler/"+efds+"_Y.joblib")
-                    y_pred = scaler_y.inverse_transform(y_pred.reshape(-1,1))
-                    # ml_output_dict['Ref_'+efds] =  y_pred.tolist()[0]
+                    #Apply scaling here for new inputs                  
+                    model_inputs = pd.DataFrame(Ntc_scaler_x.transform(np.asarray(model_inputs)),columns=self.utility_dict[efds]['imp_feature'])
+                    y_pred = Ntc_ml_model.predict(model_inputs)                   
+                    y_pred = Ntc_scaler_y.inverse_transform(y_pred.reshape(-1,1))
                     cyl_df['Ref_'+efds]  =  [re[0] for re in y_pred.tolist()]
                 elif efds == 'Pcomp': #EFD7
                     print('Pcomp')                    
                     model_inputs  = df[self.utility_dict[efds]['imp_feature']]
-                    #Applying scaling to new inputs
-                    scaler_x = load("./utils/ML_model/features_scaler/"+efds+"_X.joblib")
-                    model_inputs = pd.DataFrame(scaler_x.transform(np.asarray(model_inputs)),columns=self.utility_dict[efds]['imp_feature'])
-                    '''scaler_x = scaler.fit(x_train)
-                    from joblib import dump, load
-                    dump(scaler_x, "./Scaling_models/Pcomp_Pscav.joblib")
-                    scaler_x = []
-                    scaler_x = load("./Scaling_models/Pcomp_Pscav.joblib")
-                    x_train = pd.DataFrame(scaler_x.transform(x_train),columns=x_train.columns)'''
-                    if efds in ann_models: #for ANN models
-                        ml_model = tf.keras.models.load_model('./utils/ML_model/model/'+efds+'.keras', compile=False)
-                    elif efds in joblib_models:  
-                        ml_model =  load("./utils/ML_model/model/"+efds+".joblib")#for classical ML models
-                    y_pred = ml_model.predict(model_inputs)
-                    scaler_y = load("./utils/ML_model/features_scaler/"+efds+"_Y.joblib")
-                    y_pred = scaler_y.inverse_transform(y_pred.reshape(-1,1))
-                    # ml_output_dict['Ref_'+efds] =  y_pred.tolist()[0] 
+                    #Applying scaling to new inputs                    
+                    model_inputs = pd.DataFrame(Pcomp_scaler_x.transform(np.asarray(model_inputs)),columns=self.utility_dict[efds]['imp_feature'])
+                    y_pred = Pcomp_ml_model.predict(model_inputs)
+                    #Applying scaling to outputs
+                    y_pred = Pcomp_scaler_y.inverse_transform(y_pred.reshape(-1,1))
                     cyl_df['Ref_'+efds]  =  [re[0] for re in y_pred.tolist()]
                 elif efds == 'Pscav': #EFD8
                     print('Pscav')                   
                     model_inputs  = df[self.utility_dict[efds]['imp_feature']]
-                    print('model_inputs',model_inputs)
-                    print(type(model_inputs))
                     #Applying scaling to new inputs
-                    scaler_x = load("./utils/ML_model/features_scaler/"+efds+"_X.joblib")
-                    model_inputs = pd.DataFrame(scaler_x.transform(np.asarray(model_inputs)),columns=self.utility_dict[efds]['imp_feature'])
-                    '''scaler_x = scaler.fit(x_train)
-                    from joblib import dump, load
-                    dump(scaler_x, "./Scaling_models/Pcomp_Pscav.joblib")
-                    scaler_x = []
-                    scaler_x = load("./Scaling_models/Pcomp_Pscav.joblib")
-                    x_train = pd.DataFrame(scaler_x.transform(x_train),columns=x_train.columns)'''
-                    if efds in ann_models: #for ANN models
-                        ml_model = tf.keras.models.load_model('./utils/ML_model/model/'+efds+'.keras', compile=False)
-                    elif efds in joblib_models:  
-                        ml_model =  load("./utils/ML_model/model/"+efds+".joblib")#for classical ML models
-                    y_pred = ml_model.predict(model_inputs)
-                    scaler_y = load("./utils/ML_model/features_scaler/"+efds+"_Y.joblib")
-                    y_pred = scaler_y.inverse_transform(y_pred.reshape(-1,1))
-                    # ml_output_dict['Ref_'+efds] =  y_pred.tolist()[0] 
-                    # print('index -',cyl_df[cyl_df['Engine load range']==loads].index)
-                    # print('Output -',y_pred.tolist()[0])
-                    print('cyl_df',cyl_df)
+                    model_inputs = pd.DataFrame(Pscav_scaler_x.transform(np.asarray(model_inputs)),columns=self.utility_dict[efds]['imp_feature'])
+                    y_pred = Pscav_ml_model.predict(model_inputs)
+                    #Applying scaling to outputs                     
+                    y_pred = Pscav_scaler_y.inverse_transform(y_pred.reshape(-1,1))
                     cyl_df['Ref_'+efds] =  [re[0] for re in y_pred.tolist()]
+                      
+            tm28 = time.time() 
+            print('Total time for cyl ',str(cyl),'ml part :',tm28-tm26)    
                       
                 
             cyl_df.to_csv(self.ml_res+'ENG_{}_TS_ML_res_Cyl_{}.csv'.format(self.engine_number,cyl),index=False)   
