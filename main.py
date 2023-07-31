@@ -125,7 +125,7 @@ async def forecast_14days(current_user: User = Depends(get_current_active_user))
     ML = pdm_ml_model(data,Efd_features,engine_normalized,ts_res_loc,engine_number,ml_res_loc)
     ML_result = ML.ML_models()
 
-    Fault mapping
+    #Fault mapping
     final_indx = [pd.Timestamp(TS_result)+pd.Timedelta(tim,'h') for tim in range(1,TS.forecast_horizon+1)] #for getting timestamps for forecast period, here delta is hourly based
     fault_mat_loc = './utils/Fault_Matrix/Fault_matrix.xlsx'
     p=.2 #weight value for kpi calculations
