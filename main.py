@@ -130,7 +130,8 @@ async def forecast_14days(current_user: User = Depends(get_current_active_user))
     fault_mat_loc = './utils/Fault_Matrix/Fault_matrix.xlsx'
     p=.2 #weight value for kpi calculations
     mapping_loc = './utils/Fault_Matrix/results/'
-    for i in range(1,2):#------------ML.cyl_count+1
+    output_dict = {}
+    for i in range(1,ML.cyl_count+1):#------------ML.cyl_count+1
         ml_ress = pd.read_csv(ml_res_loc+'ENG_2_TS_ML_res_Cyl_{}.csv'.format(str(i)),index_col=False)
         ff = Faults_Mapping(ml_ress,fault_mat_loc,Efd_features,p)
         ff1,fault_ids = ff.Mapping()
@@ -141,16 +142,10 @@ async def forecast_14days(current_user: User = Depends(get_current_active_user))
                         'TS_Pcomp_Pscav','Ref_Pcomp','Ref_Pscav','Ref_Texh','Ref_Ntc','Ref_Pmax','Ref_PR','Ref_Ntc_Pscav','Ref_Pcomp_Pscav',
                         'InjSysFault','StaInjLate','StaInjEarly','ExhValvLeak','BloCombChabr','ExhValEarOpn','ExhValLatOpn','ExhValEarlClos','ExhValLatClos']]
         ml_ress.to_excel(mapping_loc+'mapping_res_cyl{}.xlsx'.format(i),index=False)
+        output_dict['Cyl_'+str(i)] = ml_ress.to_dict(orient='list')
+
+    return output_dict    
     
-    #final files
-    df_res_cyl_1 = pd.read_excel(mapping_loc+'mapping_res_cyl1.xlsx')
-    df_res_cyl_2 = pd.read_excel(mapping_loc+'mapping_res_cyl2.xlsx')
-    df_res_cyl_3 = pd.read_excel(mapping_loc+'mapping_res_cyl3.xlsx')
-    df_res_cyl_4 = pd.read_excel(mapping_loc+'mapping_res_cyl4.xlsx')
-    df_res_cyl_5 = pd.read_excel(mapping_loc+'mapping_res_cyl5.xlsx')
-    df_res_cyl_6 = pd.read_excel(mapping_loc+'mapping_res_cyl6.xlsx')
-    #return "success"
-    return {'cyl_1':df_res_cyl_1.to_dict(orient='list')}
     
 
 
