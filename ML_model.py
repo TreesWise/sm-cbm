@@ -195,6 +195,7 @@ class pdm_ml_model():
             df['Scavenge Air Temp. Piston Underside Cyl_AVG'] = df['Scavenge Air Temp. Piston Underside Cyl #0'+str(cyl)+'.1']
             df['Firing Pr. Balancing Injection Offset Cyl AVG'] = df['Firing Pr. Balancing Injection Offset Cyl_AVG']
             
+            
             for efds in self.Efd_features:# ['Pscav','Pcomp','Pmax','Texh','Ntc','Ntc_Pscav','Pcomp_Pscav','PR']
                 if efds == 'Pcomp_Pscav': #EFD1
                     print('Pcomp_Pscav')                  
