@@ -177,40 +177,22 @@ class pdm_ml_model():
             print('Time for matching loads for cyl',str(cyl),' :',tm27-tm26)       
             df = df2.loc[list(cyl_df['matched_date'])]
             
+            df['Exh. valve opening angle Cyl AVG'] = df['Exh. valve opening angle Cyl #0'+str(cyl)]
+            df['GAV Timing Set Point Cyl AVG'] = df['GAV Timing Set Point Cyl #0'+str(cyl)]
+            df['Exhaust Valve Closing Angle Setpoint Cyl AVG'] = df['Exhaust Valve Closing Angle Setpoint Cyl #0'+str(cyl)]
+            df['PFI Timing Set Point Cyl AVG'] = df['PFI Timing Set Point Cyl #0'+str(cyl)]
+            df['PFI Duration Set Point Cyl AVG'] = df['PFI Duration Set Point Cyl #0'+str(cyl)]
             df['Cyl. lub. distribution share below_PERC'] = (df['Cyl. lub. distribution share below piston']/df['Cyl. lub. distribution share into piston'])*100
             df['Cyl. lub. distribution share above_PERC'] = (df['Cyl. lub. distribution share above piston']/df['Cyl. lub. distribution share into piston'])*100
             df['Fuel Rail Pressure_diff'] = df['Mean Fuel Rail Pressure (display)'] - df['Main Fuel Rail Pressure']
-            df['GAV Timing Set Point Cyl AVG'] = (df['GAV Timing Set Point Cyl #01']+df['GAV Timing Set Point Cyl #02']+
-                                                        df['GAV Timing Set Point Cyl #03']+df['GAV Timing Set Point Cyl #04']+
-                                                        df['GAV Timing Set Point Cyl #05']+df['GAV Timing Set Point Cyl #06'])/6
-            df['PFI Timing Set Point Cyl AVG'] = (df['PFI Timing Set Point Cyl #01']+df['PFI Timing Set Point Cyl #02']+
-                                                            df['PFI Timing Set Point Cyl #03']+df['PFI Timing Set Point Cyl #04']+
-                                                            df['PFI Timing Set Point Cyl #05']+df['PFI Timing Set Point Cyl #06'])/6
+            df['Firing Pr. Balancing Injection Offset Cyl_AVG'] = df['Firing Pr. Balancing Injection Offset Cyl #0'+str(cyl)]
             df['Fuel Pressure Actuator Setpoint_AVG'] = (df['Fuel Pressure Actuator Setpoint 1']+df['Fuel Pressure Actuator Setpoint 2']+df['Fuel Pressure Actuator Setpoint 3'])/3
             df['Fuel Pump Setpoint_AVG'] = (df['Fuel Pump Setpoint Master Controller']+df['Fuel Pump Setpoint Slave Controller'])/2
-            df['Firing Pr. Balancing Injection Offset Cyl_AVG'] = (df['Firing Pr. Balancing Injection Offset Cyl #01']+df['Firing Pr. Balancing Injection Offset Cyl #02']+
-                                                                        df['Firing Pr. Balancing Injection Offset Cyl #03']+df['Firing Pr. Balancing Injection Offset Cyl #04']+
-                                                                        df['Firing Pr. Balancing Injection Offset Cyl #05']+df['Firing Pr. Balancing Injection Offset Cyl #06'])/6
-            df['Lubrication Oil Feed Rate Cyl AVG'] = (df['Lubrication Oil Feed Rate Cyl #01']+df['Lubrication Oil Feed Rate Cyl #02']+
-                                                            df['Lubrication Oil Feed Rate Cyl #03']+df['Lubrication Oil Feed Rate Cyl #04']+
-                                                            df['Lubrication Oil Feed Rate Cyl #05']+df['Lubrication Oil Feed Rate Cyl #06'])/6
-            df['Exh. valve opening angle Cyl AVG'] = (df['Exh. valve opening angle Cyl #01']+df['Exh. valve opening angle Cyl #02']+
-                                                            df['Exh. valve opening angle Cyl #03']+df['Exh. valve opening angle Cyl #04']+
-                                                            df['Exh. valve opening angle Cyl #05']+df['Exh. valve opening angle Cyl #06'])/6
-            df['Exhaust Valve Closing Angle Setpoint Cyl AVG'] = (df['Exhaust Valve Closing Angle Setpoint Cyl #01']+df['Exhaust Valve Closing Angle Setpoint Cyl #02']+
-                                                                        df['Exhaust Valve Closing Angle Setpoint Cyl #03']+df['Exhaust Valve Closing Angle Setpoint Cyl #04']+
-                                                                        df['Exhaust Valve Closing Angle Setpoint Cyl #05']+df['Exhaust Valve Closing Angle Setpoint Cyl #06'])/6
-            df['PFI Duration Set Point Cyl AVG'] = (df['PFI Duration Set Point Cyl #01']+df['PFI Duration Set Point Cyl #02']+
-                                                        df['PFI Duration Set Point Cyl #03']+df['PFI Duration Set Point Cyl #04']+
-                                                        df['PFI Duration Set Point Cyl #05']+df['PFI Duration Set Point Cyl #06'])/6
+            df['Lubrication Oil Feed Rate Cyl AVG'] = df['Lubrication Oil Feed Rate Cyl #0'+str(cyl)]
+            df['Lubrication Deadtime Feedback Cyl AVG'] = df['Lubrication Deadtime Feedback Cyl #0'+str(cyl)]
+            df['Start of Injection Cyl_AVG'] = df['Start of Injection Cyl #0'+str(cyl)]
             df['Pilot Fuel Pressure diff'] = df['Pilot Fuel Pressure A']-df['Pilot Fuel Pressure B']
-            df['Lubrication Deadtime Feedback Cyl AVG'] = (df['Lubrication Deadtime Feedback Cyl #01']+df['Lubrication Deadtime Feedback Cyl #02']+
-                                                                df['Lubrication Deadtime Feedback Cyl #03']+df['Lubrication Deadtime Feedback Cyl #04']+
-                                                                df['Lubrication Deadtime Feedback Cyl #05']+df['Lubrication Deadtime Feedback Cyl #06'])/6
-            df['Start of Injection Cyl_AVG'] = (df['Start of Injection Cyl #01']+df['Start of Injection Cyl #02']+df['Start of Injection Cyl #03']+df['Start of Injection Cyl #04']+
-                                                df['Start of Injection Cyl #05']+df['Start of Injection Cyl #06'])/6
-            df['Scavenge Air Temp. Piston Underside Cyl_AVG'] = (df['Scavenge Air Temp. Piston Underside Cyl #01.1']+df['Scavenge Air Temp. Piston Underside Cyl #02.1']+df['Scavenge Air Temp. Piston Underside Cyl #03.1']+df['Scavenge Air Temp. Piston Underside Cyl #04.1']+
-                                                                df['Scavenge Air Temp. Piston Underside Cyl #05.1']+df['Scavenge Air Temp. Piston Underside Cyl #06.1'])/6
+            df['Scavenge Air Temp. Piston Underside Cyl_AVG'] = df['Scavenge Air Temp. Piston Underside Cyl #0'+str(cyl)+'.1']
             df['Firing Pr. Balancing Injection Offset Cyl AVG'] = df['Firing Pr. Balancing Injection Offset Cyl_AVG']
             
             for efds in self.Efd_features:# ['Pscav','Pcomp','Pmax','Texh','Ntc','Ntc_Pscav','Pcomp_Pscav','PR']
