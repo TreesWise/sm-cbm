@@ -13,7 +13,7 @@ def data_load_preprocess(data_path):
     col_dup_test = df_test.columns[df_test.columns.duplicated()]
     df_dup_test = df_test[col_dup_test]
     df_test = df_test.drop(col_dup_test, axis=1)
-    # df_test = df_test.drop('Signal Date', axis=1)
+    df_test = df_test.drop('Signal Date', axis=1)
     df_dup_test = df_dup_test.iloc[:,~df_dup_test.columns.duplicated()]
     df_test = pd.concat([df_test,df_dup_test], axis=1)
     return df_test

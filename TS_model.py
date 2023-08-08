@@ -30,7 +30,9 @@ class pdm_ts_model():
         #part for test data
         # self.feature = 'EFD'
         df = self.new_data 
+        print('bfr', df.shape)
         df = df[(df['Estimated engine load']>=30)&(df['Estimated engine load']<=100)]    
+        print('aft', df.shape)
         #Normalizing based on engine load
         if self.engine_normalized == True:
             max_load = self.max_load

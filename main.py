@@ -34,8 +34,9 @@ app = FastAPI()
 
 
 # #model weight loading
-# model = torch.load('utils\\AC\\model\\model_0.0175.pt', map_location=torch.device('cpu'))
-# model.eval()
+model = AE()
+model.load_state_dict(torch.load('./utils/AE/model/model_02082023.pt', map_location=torch.device('cpu')))
+model.eval()
 
 
 app.add_middleware(
@@ -89,7 +90,7 @@ def data_preprocess(raw_data_path):
 
 @app.post("/forecast-14days")
 async def forecast_14days(current_user: User = Depends(get_current_active_user)):
-    data = data_preprocess('./test_data/workflow_test_data.csv')
+    data = pd.read_csv('./test_data/test_data_14.csv')
     mapping_loc = './utils/Fault_Matrix/results/'
     # #TS_model calling
     ts_features_file = pd.read_csv('./utils/TS_model/feature_list.csv')
@@ -105,24 +106,27 @@ async def forecast_14days(current_user: User = Depends(get_current_active_user))
 
     #AUTOENCODE
     #data preprocessing
-    # df = data_load_preprocess('test_data\\engine2_imputed.csv')
-    # df_norm_obj_test = Transform_data(df)
-    # df_norm_test = df_norm_obj_test.normalize()
-    # #final data for model
-    # df_tensor_test = torch.tensor(df_norm_test.values, dtype=torch.float32)
-    # recreated_df_test = model(df_tensor_test).cpu().detach().numpy()
-    # base_data_test = df_tensor_test.cpu().detach().numpy()
-    # faulty_date = recreation_loss(base_data_test, recreated_df_test)
-    # if len(faulty_date) > 0:
-    #     data_from_AE = df.iloc[faulty_date,:]
-    # else:
-    #     data_from_AE = df
+    df = data_load_preprocess('./test_data/test_data_14.csv')
+    df_norm_obj_test = Transform_data(df)
+    df_norm_test = df_norm_obj_test.normalize()
+    #final data for model
+    df_tensor_test = torch.tensor(df_norm_test.values, dtype=torch.float32)
+    recreated_df_test = model(df_tensor_test).cpu().detach().numpy()
+    base_data_test = df_tensor_test.cpu().detach().numpy()
+    faulty_date = recreation_loss(base_data_test, recreated_df_test)
+    if len(faulty_date) > 0:
+        #data_from_AE = data.iloc[faulty_date,:]
+        data_from_AE = data.drop(index=faulty_date)
+    else:
+        data_from_AE = data
 
+    print('data_from_AE-----------',data_from_AE.shape)
+    
     #ML_model calling
     Efd_features = ['Pscav','Pcomp','Pmax','Texh','Ntc','Ntc_Pscav','Pcomp_Pscav','PR']
     engine_normalized = False
     ml_res_loc = './utils/TS_model/results'
-    ML = pdm_ml_model(data,Efd_features,engine_normalized,ts_res_loc,engine_number,ml_res_loc)
+    ML = pdm_ml_model(data_from_AE,Efd_features,engine_normalized,ts_res_loc,engine_number,ml_res_loc)
     ML_result = ML.ML_models()
 
     #Fault mapping
