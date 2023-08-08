@@ -100,7 +100,7 @@ async def forecast_14days(current_user: User = Depends(get_current_active_user))
     engine_number = '2'
     ts_res_loc = './utils/TS_model/results'
     # TS = pdm_ts_model(data, ts_features_file, ts_model,x_scale,y_scale,engine_normalized,engine_number,ts_res_loc)
-    TS = pdm_ts_model(data, ts_features_file,engine_normalized,engine_number,ts_res_loc)
+    TS = pdm_ts_model(data, ts_features_file,engine_normalized,engine_number,ts_res_loc,ts_features_file)
     TS_result = TS.Timeseries()
 
 
