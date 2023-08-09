@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'smartmaintenance'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_244EA6874C8E4E3C8CADAE8E71C09EA6 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_23D18E27F1304E82BD40B99981B93E92 }}

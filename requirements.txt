@@ -52,3 +52,4 @@ websockets==11.0.3
 
 #fastapi
 #uvicorn
+scikit-learn==1.2.2

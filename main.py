@@ -93,14 +93,15 @@ async def forecast_14days(current_user: User = Depends(get_current_active_user))
     data = pd.read_csv('./test_data/test_data_14.csv')
     mapping_loc = './utils/Fault_Matrix/results/'
     # #TS_model calling
-    ts_features_file = pd.read_csv('./utils/TS_model/feature_list.csv')
+    ts_features_file = pd.read_csv('./utils/TS_model/final_feats.csv')
     ts_model = './utils/TS_model/TS_model.h5' #load ts model here
     x_scale = './utils/TS_model/TS_X.joblib'#load X_scaler model here
     y_scale = './utils/TS_model/TS_Y.joblib'#load Y_scaler model here
     engine_normalized = False
     engine_number = '2'
     ts_res_loc = './utils/TS_model/results'
-    TS = pdm_ts_model(data, ts_features_file, ts_model,x_scale,y_scale,engine_normalized,engine_number,ts_res_loc)
+    # TS = pdm_ts_model(data, ts_features_file, ts_model,x_scale,y_scale,engine_normalized,engine_number,ts_res_loc)
+    TS = pdm_ts_model(data, ts_features_file,engine_normalized,engine_number,ts_res_loc,ts_features_file)
     TS_result = TS.Timeseries()
 
 
