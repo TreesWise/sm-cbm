@@ -157,13 +157,10 @@ class pdm_ml_model():
                     load_cons2['load_delta'] = abs(load_cons2['Matched engine load']-loads)
                     load_cons2.sort_values(by=['load_delta'],ascending=True,inplace=True)
 
-                    print('load :',loads, cyl_df[cyl_df['Estimated engine load']==loads].index)
                     
-                    cyl_df.to_csv('cyl_df.csv')
-                    print(load_cons2)
-                    cyl_df.loc[cyl_df[cyl_df['Estimated engine load']==loads].index,'matched_load'] = load_cons2.loc[0, 'Matched engine load']
+                    cyl_df.loc[cyl_df[cyl_df['Estimated engine load']==loads].index,'matched_load'] = load_cons2.iloc[0, 0]
                     cyl_df.loc[cyl_df[cyl_df['Estimated engine load']==loads].index,'matched_date'] = load_cons2.index[0]
-                    cyl_df.loc[cyl_df[cyl_df['Estimated engine load']==loads].index,'deltas'] = load_cons2['load_delta'][0]   
+                    cyl_df.loc[cyl_df[cyl_df['Estimated engine load']==loads].index,'deltas'] = load_cons2.iloc[0,1] 
 
                     # df = df2.loc[load_cons2.index[0]]
                 else:
